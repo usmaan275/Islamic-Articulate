@@ -97,68 +97,80 @@ button:hover {
   position: relative;
 }
 
-/* --- Card Overlay --- */
 .card-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  background-color: rgba(0,0,0,0.95); /* Almost fully black */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
+  inset: 0;
+  background: #052e1a; /* dark emerald */
+  color: white;
+  z-index: 9999;
 
-/* --- Card --- */
-.card {
-  width: 90vw;
-  max-width: 90vw;
-  height: 90dvh;
-  background-color: #023b2e; /* Dark emerald card */
-  border-radius: 1dvh;
-  padding: 3dvh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  color: #f0fdf4;
-  box-shadow: 0 0 4dvh rgba(0,0,0,0.7);
-  position: relative;
-}
-
-/* Top 5 words */
-.card .top-words {
-  display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 2dvh;
-  margin-bottom: 5dvh;
+  padding: 4dvh 4vw;
 }
 
-/* Main word (centered) */
-.card .main-word {
-  font-size: 6dvh;
-  font-weight: bold;
+.card-top {
+  display: flex;
+  gap: 3vw;
+  font-size: 2dvh;
+  opacity: 0.8;
+}
+
+.card-category {
+  font-size: 4dvh;
+  opacity: 0.7;
+}
+
+.card-value {
+  font-size: 8dvh;
   text-align: center;
-  flex-grow: 1;
+}
+
+.card-timer {
+  font-size: 3dvh;
+}
+
+.card-actions {
+  display: flex;
+  gap: 4vw;
+}
+
+.skip-btn,
+.correct-btn {
+  font-size: 3dvh;
+  padding: 2dvh 4vw;
+  margin-bottom: 5dvh;
+  border-radius: 1dvh;
+  border: none;
+  cursor: pointer;
+}
+
+.skip-btn {
+  background: #1e3a8a;
+  color: white;
+}
+
+.correct-btn {
+  background: #16a34a;
+  color: white;
+}
+
+/* WINNER SCREEN */
+.winner-screen {
+  position: fixed;
+  inset: 0;
+  background: #052e1a;
+  color: white;
+  z-index: 10000;
+
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-/* Card buttons at the bottom */
-.card-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: auto;
-}
-
-.card-buttons button {
-  width: 48%;
-  font-size: 2dvh;
-  padding: 1.5dvh;
+  font-size: 6dvh;
+  text-align: center;
 }
 
 .space-label {
