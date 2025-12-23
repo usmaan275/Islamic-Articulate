@@ -68,7 +68,7 @@ export default function Instructions() {
       <h3>Winning the Game</h3>
       <p>
         The first team to reach the end of the board wins the game.
-      </p>
+      </p><p></p>
 
       <button onClick={() => navigate('/')}>Back</button>
     </div>

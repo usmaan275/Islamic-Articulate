@@ -201,9 +201,12 @@ button:hover {
 /* ---------- INSTRUCTIONS PAGE ---------- */
 
 .instructions {
+  height: auto;
+  position: relative;
   max-width: 95vw;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 5dvh;
 }
 
 .instructions h2 {
@@ -236,7 +239,7 @@ button:hover {
 }
 
 .instructions li {
-  font-size: 2.1dvh;
+  font-size: 2.8dvh;
   line-height: 3dvh;
   margin-bottom: 1.2dvh;
 }
