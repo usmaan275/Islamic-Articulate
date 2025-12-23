@@ -34,7 +34,7 @@ button {
   border-radius: 0.5dvh;
   background-color: #10b981; /* Emerald green button */
   color: #ffffff;
-  font-size: 2dvh;
+  font-size: 3dvh;
   cursor: pointer;
   transition: background 0.2s;
 }
