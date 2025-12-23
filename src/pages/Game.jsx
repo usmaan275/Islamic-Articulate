@@ -3,7 +3,7 @@ import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
 import cards from '../data/cards'
 
-const REAL_CATEGORIES = ['Being', 'Surah', 'Quality', 'Random', 'Fiqh']
+const REAL_CATEGORIES = ['Figure', 'Surah', 'Quality', 'Random', 'Fiqh']
 const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
 const WIN_POSITION = 23
 

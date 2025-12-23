@@ -1,5 +1,5 @@
 export default function Board({ positions, teamCount }) {
-  const sectionLabels = ['Being', 'Surah', 'Quality', 'Random', 'Fiqh', 'Any']
+  const sectionLabels = ['Figure', 'Surah', 'Quality', 'Random', 'Fiqh', 'Any']
   const sectionColors = ['#facc15', '#a7f3d0', '#93c5fd', '#5273d0ff', '#a78bfa', '#ffffff']
 
   return (

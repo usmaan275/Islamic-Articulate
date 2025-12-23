@@ -8,11 +8,11 @@ export default function CardOverlay({
   return (
     <div className="card-overlay">
       <div className="card-top">
-        <span>{card.Being}</span>
-        <span>{card.Surah}</span>
-        <span>{card.Quality}</span>
-        <span>{card.Random}</span>
-        <span>{card.Fiqh}</span>
+        <div><strong>Figure:</strong> {card.Figure}</div>
+        <div><strong>Surah:</strong> {card.Surah}</div>
+        <div><strong>Quality:</strong> {card.Quality}</div>
+        <div><strong>Random:</strong> {card.Random}</div>
+        <div><strong>Fiqh:</strong> {card.Fiqh}</div>
       </div>
 
       <div className="card-category">{category}</div>
