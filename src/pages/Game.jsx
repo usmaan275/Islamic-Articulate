@@ -17,7 +17,7 @@ export default function Game() {
   const [overlayVisible, setOverlayVisible] = useState(false)
 
   const [points, setPoints] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(5)
+  const [timeLeft, setTimeLeft] = useState(60)
 
   const [activeCategory, setActiveCategory] = useState(null)
   const [winner, setWinner] = useState(null)
@@ -45,7 +45,7 @@ export default function Game() {
 
     setOverlayVisible(true)
     setPoints(0)
-    setTimeLeft(5)
+    setTimeLeft(60)
   }
 
   /* TIMER */
@@ -91,7 +91,7 @@ export default function Game() {
     setCurrentTeam((prev) => (prev + 1) % teamCount)
     setOverlayVisible(false)
     setPoints(0)
-    setTimeLeft(5)
+    setTimeLeft(60)
     setActiveCategory(null)
   }
 
