@@ -13,32 +13,55 @@ export default function Game() {
   const [positions, setPositions] = useState(Array(teamCount).fill(0))
   const [currentTeam, setCurrentTeam] = useState(0)
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0)
   const [overlayVisible, setOverlayVisible] = useState(false)
-
   const [points, setPoints] = useState(0)
   const [timeLeft, setTimeLeft] = useState(60)
 
   const [activeCategory, setActiveCategory] = useState(null)
   const [winner, setWinner] = useState(null)
 
+  // 🔥 CATEGORY INDEXES
+  const [categoryIndexes, setCategoryIndexes] = useState({
+    Figure: 0,
+    Surah: 0,
+    Quality: 0,
+    Random: 0,
+    Fiqh: 0,
+  })
+
+  const [hasInitialised, setHasInitialised] = useState(false)
+
   const currentPosition = positions[currentTeam]
   const boardCategory =
     BOARD_CATEGORIES[currentPosition % BOARD_CATEGORIES.length]
 
-  const currentCard = cards[currentCardIndex]
+  /* CURRENT CARD BASED ON ACTIVE CATEGORY */
+  const currentCard =
+    activeCategory !== null
+      ? cards[categoryIndexes[activeCategory]]
+      : null
 
   /* START ROUND */
   const startRound = () => {
     if (winner !== null) return
 
-    const randomStart = Math.floor(Math.random() * cards.length)
-    setCurrentCardIndex(randomStart)
+    // 🔥 One-time random pivot
+    if (!hasInitialised) {
+      const pivot = Math.floor(Math.random() * cards.length)
+      setCategoryIndexes({
+        Figure: pivot,
+        Surah: pivot,
+        Quality: pivot,
+        Random: pivot,
+        Fiqh: pivot,
+      })
+      setHasInitialised(true)
+    }
 
     if (boardCategory === 'Any') {
-      const randomCategory =
+      setActiveCategory(
         REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
-      setActiveCategory(randomCategory)
+      )
     } else {
       setActiveCategory(boardCategory)
     }
@@ -50,8 +73,7 @@ export default function Game() {
 
   /* TIMER */
   useEffect(() => {
-    if (!overlayVisible) return
-    if (timeLeft <= 0) return
+    if (!overlayVisible || timeLeft <= 0) return
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => prev - 1)
@@ -63,14 +85,20 @@ export default function Game() {
   /* NEXT CARD */
   const nextCard = (correct = false) => {
     if (correct) setPoints((prev) => prev + 1)
-  
-    setCurrentCardIndex((prev) => (prev + 1) % cards.length)
-  
-    // 🔥 Any = new random category every card
+
+    setCategoryIndexes((prev) => ({
+      ...prev,
+      [activeCategory]:
+        (prev[activeCategory] + 1) % cards.length,
+    }))
+
+    // 🔥 Any changes category EVERY card
     if (boardCategory === 'Any') {
-      setActiveCategory(REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)])
+      setActiveCategory(
+        REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
+      )
     }
-  }  
+  }
 
   const handleSkip = () => nextCard(false)
   const handleCorrect = () => nextCard(true)
@@ -121,7 +149,7 @@ export default function Game() {
         )}
       </div>
 
-      {overlayVisible && activeCategory && (
+      {overlayVisible && activeCategory && currentCard && (
         <CardOverlay
           card={currentCard}
           category={activeCategory}
