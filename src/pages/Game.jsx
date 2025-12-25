@@ -41,6 +41,15 @@ export default function Game() {
       ? cards[categoryIndexes[activeCategory]]
       : null
 
+  const incrementCategoryOnce = (category) => {
+    if (!category) return
+
+    setCategoryIndexes((prev) => ({
+      ...prev,
+      [category]: (prev[category] + 1) % cards.length,
+    }))
+  }
+  
   /* START ROUND */
   const startRound = () => {
     if (winner !== null) return
@@ -105,6 +114,9 @@ export default function Game() {
 
   /* END ROUND */
   const endRound = () => {
+    // 🔥 ensure fresh card next round
+    incrementCategoryOnce(activeCategory)
+
     const newPositions = [...positions]
     newPositions[currentTeam] += points
 
