@@ -59,10 +59,10 @@ export default function Game() {
       const pivot = Math.floor(Math.random() * cards.length)
       setCategoryIndexes({
         Figure: pivot,
-        Surah: pivot + 23,
-        Quality: pivot + 46,
-        Random: pivot + 69,
-        Fiqh: pivot + 92,
+        Surah: (pivot + 23) % cards.length,
+        Quality: (pivot + 46) % cards.length,
+        Random: (pivot + 69) % cards.length,
+        Fiqh: (pivot + 92) % cards.length,
       })
       setHasInitialised(true)
     }
