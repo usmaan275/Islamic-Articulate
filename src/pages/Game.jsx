@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
 import cards from '../data/cards'
@@ -8,7 +9,8 @@ const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
 const WIN_POSITION = 23
 
 export default function Game() {
-  const teamCount = 2
+  const location = useLocation()
+  const teamCount = location.state?.teams || 2
 
   const [positions, setPositions] = useState(Array(teamCount).fill(0))
   const [currentTeam, setCurrentTeam] = useState(0)
