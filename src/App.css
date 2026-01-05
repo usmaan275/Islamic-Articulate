@@ -31,6 +31,7 @@ button {
   padding: 1dvh 2vw;
   margin: 1dvh 0.5vw;
   border: none;
+  width: 20vmax;
   border-radius: 0.5dvh;
   background-color: #10b981; /* Emerald green button */
   color: #ffffff;
@@ -175,12 +176,21 @@ button:hover {
 
 .space-label {
   position: absolute;
-  top: 0.5dvh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5dvh;
-  font-weight: bold;
-  color: #000000; /* Black for visibility on colored spaces */
+  transform: translate(-50%, -50%) rotate(180deg);
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+  font-size: 2vw;
+  font-weight: 600;
+  letter-spacing: 0.25vmax;
+
+  color: #000000;
+  opacity: 0.85;
+
+  pointer-events: none;
 }
 
 /* Optional: lighten dark team markers if needed */
