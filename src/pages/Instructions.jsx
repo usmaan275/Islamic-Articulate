@@ -70,7 +70,7 @@ export default function Instructions() {
         The first team to reach the end of the board wins the game.
       </p><p></p>
 
-      <button onClick={() => navigate('/')}>Back</button>
+      <button className="back-button" onClick={() => navigate('/')}>Back</button>
     </div>
   )
 }

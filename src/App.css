@@ -28,16 +28,23 @@ body, html, #root {
 
 /* --- Buttons --- */
 button {
-  padding: 1dvh 2vw;
+  padding: 2dvh 2vw;
   margin: 1dvh 0.5vw;
   border: none;
   width: 20vmax;
-  border-radius: 0.5dvh;
+  border-radius: 1dvh;
   background-color: #10b981; /* Emerald green button */
   color: #ffffff;
   font-size: 3dvh;
   cursor: pointer;
   transition: background 0.2s;
+}
+
+button.back-button {
+  position: fixed;
+  top: 10vmin;
+  left: 10vmin;
+  width: auto;
 }
 
 button:hover {
@@ -153,6 +160,10 @@ button:hover {
   color: white;
 }
 
+.skip-btn:hover {
+  background: #374bb1;
+}
+
 .correct-btn {
   background: #16a34a;
   color: white;
@@ -195,12 +206,10 @@ button:hover {
 
 /* Optional: lighten dark team markers if needed */
 .team-marker {
-  width: 4dvh;
-  height: 4dvh;
+  width: 3.5vmin;
+  height: 3.5vmin;
   border-radius: 50%;
-  background-color: #f59e0b; /* golden/yellow stands out on all sections */
-  color: #000000;
-  font-size: 2dvh;
+  font-size: 1.75vmin;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,8 +221,8 @@ button:hover {
 
 .instructions {
   height: auto;
+  width: auto;
   position: relative;
-  max-width: 95vw;
   margin: 0 auto;
   text-align: center;
   padding-bottom: 5dvh;
