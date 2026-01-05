@@ -40,13 +40,6 @@ button {
   transition: background 0.2s;
 }
 
-button.back-button {
-  position: fixed;
-  top: 10vmin;
-  left: 10vmin;
-  width: auto;
-}
-
 button:hover {
   background-color: #059669;
 }
@@ -229,20 +222,20 @@ button:hover {
 }
 
 .instructions h2 {
-  font-size: 5dvh;
+  font-size: 5vmin;
   margin-bottom: 3dvh;
   color: #e8fff4;
 }
 
 .instructions h3 {
-  font-size: 3.8dvh;
+  font-size: 3.8vmin;
   margin-top: 3.5dvh;
   margin-bottom: 1dvh;
   color: #9fe6c3;
 }
 
 .instructions p {
-  font-size: 3.2dvh;
+  font-size: 3.2vmin;
   line-height: 3.2dvh;
   margin: 1.5dvh auto;
   opacity: 0.9;
@@ -258,8 +251,8 @@ button:hover {
 }
 
 .instructions li {
-  font-size: 2.8dvh;
-  line-height: 3dvh;
+  font-size: 2.8vmin;
+  line-height: 3vmin;
   margin-bottom: 1.2dvh;
 }
 
@@ -268,11 +261,12 @@ button:hover {
   font-weight: 600;
 }
 
-.instructions button {
+.instructions button { /* Back Button */
   position: absolute;
   top: 2dvh;
-  left: 2vw;
-  font-size: 2.3dvh;
+  left: 2dvh;
+  width: auto;
+  font-size: 2.3vmin;
   padding: 1.2dvh 3vw;
   border-radius: 1.2dvh;
   background: #1f8f6b;
@@ -285,4 +279,3 @@ button:hover {
 .instructions button:hover {
   opacity: 0.9;
 }
-
