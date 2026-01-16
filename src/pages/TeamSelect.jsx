@@ -10,9 +10,9 @@ export default function TeamSelect() {
   return (
     <div className="screen center">
       <h2>Select Teams</h2>
-      {[2, 3, 4].map(n => (
+      {[1, 2, 3, 4].map(n => (
         <button key={n} onClick={() => startGame(n)}>
-          {n} Teams
+          {n} {n === 1 ? "Team" : "Teams"}
         </button>
       ))}
     </div>
