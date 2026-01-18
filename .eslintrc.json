@@ -1,7 +1,0 @@
-{
-    "rules": {
-      "react-hooks/exhaustive-deps": "warn",
-      "import/no-anonymous-default-export": "off"
-    }
-  }
-  
