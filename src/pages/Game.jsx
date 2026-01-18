@@ -6,7 +6,7 @@ import cards from '../data/cards'
 
 const REAL_CATEGORIES = ['Figure', 'Surah', 'Quality', 'Random', 'Fiqh']
 const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
-const WIN_POSITION = 23
+const WIN_POSITION = 24
 const ROUND_TIME = 60
 
 export default function Game() {
