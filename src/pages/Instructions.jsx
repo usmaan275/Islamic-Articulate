@@ -8,9 +8,11 @@ export default function Instructions() {
       <h2>How to Play 🕌</h2>
   
       <p>
-        If you know what <strong>Charades</strong> is, you’ll feel right at home.
-        <br />
-        <strong>Islamic Articulate</strong> is similar — but instead of acting,
+        Islamic Articulate is a fun and fast-paced word description game!
+      </p>
+      <p>
+        If you know what <strong>Charades</strong> is, you’ll understand this game very 
+        easily. <strong>Articulate</strong> is similar — but instead of acting,
         you <strong>describe words using only speech</strong>.
       </p>
   
@@ -29,12 +31,12 @@ export default function Instructions() {
             <li>Say any <strong>part</strong> of the word</li>
             <li>Spell it out</li>
             <li>Use rhyming words</li>
-            <li>Use translations of the word</li>
+            <li>Say the word in another language</li>
           </ul>
         </li>
 
         <li>
-          However you <strong>are</strong> allowed to:
+          However you <strong>are allowed</strong> to:
           <ul>
             <li>Explain what it is used for</li>
             <li>Describe its meaning or purpose</li>
@@ -45,6 +47,10 @@ export default function Instructions() {
 
         <li>
           Your teammates can shout out as many guesses as they like until time runs out ⏳
+        </li>
+
+        <li>
+          Although we've listed these rules, feel free to adapt them to your group's preferences and have fun 😊
         </li>
       </ul>
   
@@ -60,7 +66,7 @@ export default function Instructions() {
           win 🏆
         </li>
         <li>
-          <strong>3 Teams</strong> – Often the most enjoyable… and hey,
+          <strong>3 Teams</strong> – Often the most enjoyable… and often,
           <strong> three is Sunnah</strong> 🙂
         </li>
         <li>
@@ -106,21 +112,21 @@ export default function Instructions() {
         </li>
         <li>
           <strong>Surah</strong> – The name of a chapter from the Qur’an. The card
-          shows the Arabic name, with the English meaning in brackets. Players may
+          shows the Arabic name, with the English translation in brackets. Players may
           guess either one 📖
         </li>
         <li>
           <strong>Quality</strong> – A characteristic or attribute found in people.
-          This could be a masdar (noun form) like mercy or patience, or an adjective
-          like kind or angry.
+          This could be a masdar (a verbal noun) like "mercy" or "patience", or an adjective
+          like "kind" or "angry".
         </li>
         <li>
           <strong>Random</strong> – Anything mentioned in the Qur’an that doesn’t
-          fit the other categories, such as animals, nature, food, or objects 🌿
+          fit the other categories, such as animals, nature, objects, etc. 🌿
         </li>
         <li>
           <strong>Fiqh</strong> – Islamic legal and worship-related terms. Most are
-          action-based words, with a few important Arabic fiqh terms included as
+          action-based words (words ending with -ing), with a few common Arabic fiqh terms included as
           well.
         </li>
         <li>
@@ -131,8 +137,8 @@ export default function Instructions() {
   
       <h3>Winning the Game 🏁</h3>
       <p>
-        There are <strong>24 spaces</strong> on the board. The first team to reach
-        or cross the final space wins the game.
+        There are <strong>24 spaces</strong> on the board. The first team to cross the final space 
+        wins the game.
       </p>
   
       <p>
