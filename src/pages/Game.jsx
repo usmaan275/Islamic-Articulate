@@ -144,7 +144,7 @@ export default function Game() {
     if (overlayVisible && timeLeft <= 0) {
       endRound()
     }
-  }, [timeLeft, overlayVisible])
+  }, [timeLeft, overlayVisible, endRound])
 
   /* ------------------ RENDER ------------------ */
 
