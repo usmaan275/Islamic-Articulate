@@ -218,26 +218,26 @@ button:hover {
   position: relative;
   margin: 0 auto;
   text-align: center;
-  padding-bottom: 5dvh;
+  padding-bottom: 5vh;
 }
 
 .instructions h2 {
   font-size: 5vmin;
-  margin-bottom: 3dvh;
+  margin-bottom: 3vh;
   color: #e8fff4;
 }
 
 .instructions h3 {
   font-size: 3.8vmin;
-  margin-top: 3.5dvh;
-  margin-bottom: 1dvh;
+  margin-top: 3.5vh;
+  margin-bottom: 1vh;
   color: #9fe6c3;
 }
 
 .instructions p {
   font-size: 3.2vmin;
-  line-height: 4.2dvh;
-  margin: 1.5dvh auto;
+  line-height: 4.2vh;
+  margin: 1.5vh auto;
   opacity: 0.9;
   max-width: 85vw;
 }
@@ -246,14 +246,14 @@ button:hover {
   list-style-type: disc;
   text-align: left;
   max-width: 85vw;
-  margin: 2.5dvh auto;
+  margin: 2.5vh auto;
   padding-left: 4vw;
 }
 
 .instructions li {
   font-size: 2.8vmin;
   line-height: 4vmin;
-  margin-bottom: 1.2dvh;
+  margin-bottom: 1.2vh;
 }
 
 .instructions strong {
@@ -263,12 +263,12 @@ button:hover {
 
 .instructions button { /* Back Button */
   position: absolute;
-  top: 2dvh;
-  left: 2dvh;
+  top: 2vh;
+  left: 2vh;
   width: auto;
   font-size: 2.3vmin;
-  padding: 1.2dvh 3vw;
-  border-radius: 1.2dvh;
+  padding: 1.2vh 3vw;
+  border-radius: 1.2vh;
   background: #1f8f6b;
   color: white;
   border: none;
