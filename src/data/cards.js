@@ -2,7 +2,7 @@
    Columns: ID, Figure, Surah, Quality, Random, Fiqh
 */
 
-const cards= [
+export default [
   { id: 1,   Figure: "Muhammad ﷺ",             Surah: "[33] Al-Ahzab (The Forces)",               Quality: "Mercy",           Random: "Spider",        Fiqh: "Sunnah"       },
   { id: 2,   Figure: "Abbas ؓ",                 Surah: "[53] An-Najm (The Star)",                  Quality: "Aware",           Random: "Olive",         Fiqh: "Ruling"       },
   { id: 3,   Figure: "Abu Lahab",              Surah: "[9] At-Tawbah (The Repentance)",           Quality: "Stingy",          Random: "Cave",          Fiqh: "Oppressing"   },
@@ -130,5 +130,3 @@ const cards= [
   { id: 113, Figure: "Jalal ؒ",                 Surah: "[67] Al-Mulk (The Kingdom)",               Quality: "Scholarly",       Random: "Gourd",         Fiqh: "Waiting"      },
   { id: 114, Figure: "Abu Hurayrah ؓ",          Surah: "[103] Al-Asr (The Time)",                  Quality: "Reliable",        Random: "Fly",           Fiqh: "Eating"       }
 ];
-
-export default cards;

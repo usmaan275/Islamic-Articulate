@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
@@ -117,42 +117,26 @@ export default function Game() {
 
   /* ------------------ END ROUND ------------------ */
 
-  const endRound = useCallback(() => {
-    const newPositions = [...positions];
-    newPositions[currentTeam] += points;
-  
+  const endRound = () => {
+    const newPositions = [...positions]
+    newPositions[currentTeam] += points
+
     if (newPositions[currentTeam] >= WIN_POSITION) {
-      setPositions(newPositions);
-      setWinner(currentTeam);
-      setOverlayVisible(false);
-      return;
+      setPositions(newPositions)
+      setWinner(currentTeam)
+      setOverlayVisible(false)
+      return
     }
-  
-    setPositions(newPositions);
-    setCurrentTeam(prev => (prev + 1) % teamCount);
-  
-    setOverlayVisible(false);
-    setPoints(0);
-    setTimeLeft(ROUND_TIME);
-    setActiveCategory(null);
-    setCurrentCard(null);
-  }, [
-    positions,
-    currentTeam,
-    points,
-    teamCount,
-    WIN_POSITION,
-    ROUND_TIME,
-    setPositions,
-    setWinner,
-    setOverlayVisible,
-    setCurrentTeam,
-    setPoints,
-    setTimeLeft,
-    setActiveCategory,
-    setCurrentCard
-  ]);
-  
+
+    setPositions(newPositions)
+    setCurrentTeam(prev => (prev + 1) % teamCount)
+
+    setOverlayVisible(false)
+    setPoints(0)
+    setTimeLeft(ROUND_TIME)
+    setActiveCategory(null)
+    setCurrentCard(null)
+  }
 
   /* ------------------ AUTO END ROUND ------------------ */
 
@@ -160,7 +144,7 @@ export default function Game() {
     if (overlayVisible && timeLeft <= 0) {
       endRound()
     }
-  }, [timeLeft, overlayVisible, endRound])
+  }, [timeLeft, overlayVisible])
 
   /* ------------------ RENDER ------------------ */
 
