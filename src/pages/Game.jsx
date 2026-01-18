@@ -156,7 +156,7 @@ export default function Game() {
         {winner === null ? (
           <>
             <p>
-              Team {currentTeam + 1}'s turn — Time left: {timeLeft}s
+              Team {currentTeam + 1}'s turn next!
             </p>
             {!overlayVisible && (
               <button onClick={startRound}>Start Round</button>

@@ -236,7 +236,7 @@ button:hover {
 
 .instructions p {
   font-size: 3.2vmin;
-  line-height: 3.2dvh;
+  line-height: 4.2dvh;
   margin: 1.5dvh auto;
   opacity: 0.9;
   max-width: 85vw;
@@ -252,7 +252,7 @@ button:hover {
 
 .instructions li {
   font-size: 2.8vmin;
-  line-height: 3vmin;
+  line-height: 4vmin;
   margin-bottom: 1.2dvh;
 }
 
