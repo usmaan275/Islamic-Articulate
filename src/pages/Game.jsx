@@ -34,8 +34,12 @@ export default function Game() {
   })
 
   const currentPosition = positions[currentTeam]
-  const boardCategory =
-    BOARD_CATEGORIES[currentPosition % BOARD_CATEGORIES.length]
+
+  const [boardStartIndex] = useState(
+    () => Math.floor(Math.random() * BOARD_CATEGORIES.length)
+  )
+  const boardCategory = 
+    BOARD_CATEGORIES[(currentPosition + boardStartIndex) % BOARD_CATEGORIES.length] 
 
   /* ------------------ HELPERS ------------------ */
 
@@ -150,7 +154,7 @@ export default function Game() {
 
   return (
     <div className="screen">
-      <Board positions={positions} teamCount={teamCount} />
+      <Board positions={positions} teamCount={teamCount} startIndex={boardStartIndex} />
 
       <div className="bottom">
         {winner === null ? (

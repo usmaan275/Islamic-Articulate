@@ -1,9 +1,6 @@
-export default function Board({ positions, teamCount }) {
+export default function Board({ positions, teamCount, startIndex }) {
   const sectionLabels = ['Figure', 'Surah', 'Quality', 'Random', 'Fiqh', 'Any']
   const sectionColors = ['#facc15', '#a7f3d0', '#93c5fd', '#5273d0ff', '#a78bfa', '#ffffff']
-
-  // Randomised initial label
-  const startIndex = Math.floor(Math.random() * sectionLabels.length)
 
   return (
     <div className="board">
