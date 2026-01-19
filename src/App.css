@@ -236,7 +236,7 @@ button:hover {
 
 .instructions p {
   font-size: 3.2vmin;
-  line-height: 4.2vh;
+  line-height: 4.2vmin;
   margin: 1.5vh auto;
   opacity: 0.9;
   max-width: 85vw;
@@ -269,7 +269,7 @@ button:hover {
   font-size: 2.3vmin;
   padding: 1.2vh 3vw;
   border-radius: 1.2vh;
-  background: #1f8f6b;
+  background: #10b981;
   color: white;
   border: none;
   cursor: pointer;
@@ -277,5 +277,5 @@ button:hover {
 }
 
 .instructions button:hover {
-  opacity: 0.9;
+  background-color: #059669;
 }
