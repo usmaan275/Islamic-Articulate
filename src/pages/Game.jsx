@@ -4,7 +4,7 @@ import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
 import cards from '../data/cards'
 
-const REAL_CATEGORIES = ['Figure', 'Surah', 'Quality', 'Random', 'Fiqh']
+const REAL_CATEGORIES = ['Figure', 'Nature', 'Surah', 'Quality', 'Random']
 const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
 const WIN_POSITION = 24
 const ROUND_TIME = 60
@@ -27,23 +27,23 @@ export default function Game() {
   // 🔥 Per-category used card memory
   const [usedCards, setUsedCards] = useState({
     Figure: new Set(),
+    Nature: new Set(),
     Surah: new Set(),
     Quality: new Set(),
     Random: new Set(),
-    Fiqh: new Set(),
   })
 
   const currentPosition = positions[currentTeam]
 
   const [boardStartIndex] = useState(
-    () => Math.floor(Math.random() * BOARD_CATEGORIES.length)
+    () => Math.floor(Math.nature() * BOARD_CATEGORIES.length)
   )
   const boardCategory = 
     BOARD_CATEGORIES[(currentPosition + boardStartIndex) % BOARD_CATEGORIES.length] 
 
   /* ------------------ HELPERS ------------------ */
 
-  const getRandomUnusedCard = (category) => {
+  const getNatureUnusedCard = (category) => {
     const used = usedCards[category]
     const available = cards.filter(card => !used.has(card.id))
 
@@ -53,10 +53,10 @@ export default function Game() {
         ...prev,
         [category]: new Set(),
       }))
-      return cards[Math.floor(Math.random() * cards.length)]
+      return cards[Math.floor(Math.nature() * cards.length)]
     }
 
-    return available[Math.floor(Math.random() * available.length)]
+    return available[Math.floor(Math.nature() * available.length)]
   }
 
   /* ------------------ START ROUND ------------------ */
@@ -66,11 +66,11 @@ export default function Game() {
 
     const category =
       boardCategory === 'Any'
-        ? REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
+        ? REAL_CATEGORIES[Math.floor(Math.nature() * REAL_CATEGORIES.length)]
         : boardCategory
 
     setActiveCategory(category)
-    setCurrentCard(getRandomUnusedCard(category))
+    setCurrentCard(getNatureUnusedCard(category))
 
     setOverlayVisible(true)
     setPoints(0)
@@ -109,11 +109,11 @@ export default function Game() {
     let nextCategory = activeCategory
     if (boardCategory === 'Any') {
       nextCategory =
-        REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
+        REAL_CATEGORIES[Math.floor(Math.nature() * REAL_CATEGORIES.length)]
       setActiveCategory(nextCategory)
     }
 
-    setCurrentCard(getRandomUnusedCard(nextCategory))
+    setCurrentCard(getNatureUnusedCard(nextCategory))
   }
 
   const handleSkip = () => nextCard(false)
