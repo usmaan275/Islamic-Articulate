@@ -53,10 +53,10 @@ export default function Game() {
         ...prev,
         [category]: new Set(),
       }))
-      return cards[Math.floor(Math.nature() * cards.length)]
+      return cards[Math.floor(Math.random() * cards.length)]
     }
 
-    return available[Math.floor(Math.nature() * available.length)]
+    return available[Math.floor(Math.random() * available.length)]
   }
 
   /* ------------------ START ROUND ------------------ */
@@ -66,7 +66,7 @@ export default function Game() {
 
     const category =
       boardCategory === 'Any'
-        ? REAL_CATEGORIES[Math.floor(Math.nature() * REAL_CATEGORIES.length)]
+        ? REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
         : boardCategory
 
     setActiveCategory(category)
@@ -109,7 +109,7 @@ export default function Game() {
     let nextCategory = activeCategory
     if (boardCategory === 'Any') {
       nextCategory =
-        REAL_CATEGORIES[Math.floor(Math.nature() * REAL_CATEGORIES.length)]
+        REAL_CATEGORIES[Math.floor(Math.random() * REAL_CATEGORIES.length)]
       setActiveCategory(nextCategory)
     }
 
