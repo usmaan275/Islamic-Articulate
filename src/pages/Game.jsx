@@ -36,7 +36,7 @@ export default function Game() {
   const currentPosition = positions[currentTeam]
 
   const [boardStartIndex] = useState(
-    () => Math.floor(Math.nature() * BOARD_CATEGORIES.length)
+    () => Math.floor(Math.random() * BOARD_CATEGORIES.length)
   )
   const boardCategory = 
     BOARD_CATEGORIES[(currentPosition + boardStartIndex) % BOARD_CATEGORIES.length] 
