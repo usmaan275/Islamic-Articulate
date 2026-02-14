@@ -111,6 +111,10 @@ export default function Instructions() {
           lessons.
         </li>
         <li>
+          <strong>Nature</strong> – .Anything mentioned in the Qur’an, such as animals, 
+          plants, celestial bodies, etc. 🌿
+        </li>
+        <li>
           <strong>Surah</strong> – The name of a chapter from the Qur’an. The card
           shows the Arabic name, with the English translation in brackets. Players may
           guess either one 📖
@@ -121,17 +125,12 @@ export default function Instructions() {
           like "kind" or "angry".
         </li>
         <li>
-          <strong>Random</strong> – Anything mentioned in the Qur’an that doesn’t
-          fit the other categories, such as animals, nature, objects, etc. 🌿
-        </li>
-        <li>
-          <strong>Fiqh</strong> – Islamic legal and worship-related terms. Most are
-          action-based words (words ending with -ing), with a few common Arabic fiqh terms included as
-          well.
+          <strong>Random</strong> – A mixture of action-based words (words ending with -ing), a 
+          few common Arabic fiqh terms, random objects mentioned in the Qur’an, etc. 🎲
         </li>
         <li>
           <strong>Any</strong> – A special space where a random category is chosen
-          each time you draw a card 🎲
+          each time you draw a card
         </li>
       </ul>
   
