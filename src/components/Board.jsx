@@ -11,6 +11,7 @@ export default function Board({ positions, teamCount, startIndex }) {
 
         return (
           <div className="space" key={i} style={{ backgroundColor: bgColor }}>
+            <div className="space-number">{i + 1}</div>
             <div className="space-label">{label}</div>
             {positions.map((pos, idx) =>
               pos === i ? (
