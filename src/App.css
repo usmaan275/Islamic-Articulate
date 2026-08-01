@@ -178,6 +178,18 @@ button:hover {
   text-align: center;
 }
 
+.space-number {
+  position: absolute;
+  top: 0.6dvh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2.2vmin;
+  font-weight: 700;
+  color: #000;
+  z-index: 2;
+}
+
 .space-label {
   position: absolute;
   top: 50%;
@@ -278,16 +290,4 @@ button:hover {
 
 .instructions button:hover {
   background-color: #059669;
-}
-
-.space-number {
-  position: absolute;
-  top: 0.6dvh;
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-size: 2.4vmin;
-  font-weight: 700;
-  color: #000;
-  z-index: 2;
 }
