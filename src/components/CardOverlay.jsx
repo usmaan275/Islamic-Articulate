@@ -11,7 +11,7 @@ export default function CardOverlay({
         <div><strong>Figure:</strong> {card.Figure}</div>
         <div><strong>Nature:</strong> {card.Nature}</div>
         <div><strong>Surah:</strong> {card.Surah}</div>
-        <div><strong>Quality:</strong> {card.Quality}</div>
+        <div><strong>Action:</strong> {card.Action}</div>
         <div><strong>Random:</strong> {card.Random}</div>
       </div>
 

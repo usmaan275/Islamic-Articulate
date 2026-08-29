@@ -6,22 +6,22 @@ export default function Instructions() {
   return (
     <div className="screen instructions">
       <h2>How to Play 🕌</h2>
-  
+
       <p>
         Islamic Articulate is a fun and fast-paced word description game!
       </p>
       <p>
-        If you know what <strong>Charades</strong> is, you’ll understand this game very 
+        If you know what <strong>Charades</strong> is, you’ll understand this game very
         easily. <strong>Articulate</strong> is similar — but instead of acting,
         you <strong>describe words using only speech</strong>.
       </p>
-  
+
       <p>
         You will be given a <strong>random word</strong>, and your goal is to help
         your teammates guess it <strong>without saying the word itself</strong>.
         Think clearly, speak quickly, and trust your team 🤝
       </p>
-  
+
       <h3>Describing the Word (Important Rules ⚠️)</h3>
       <ul>
         <li>
@@ -53,7 +53,7 @@ export default function Instructions() {
           Although we've listed these rules, feel free to adapt them to your group's preferences and have fun 😊
         </li>
       </ul>
-  
+
       <h3>Teams 👥</h3>
       <p>You can choose from <strong>four team options</strong>:</p>
       <ul>
@@ -74,7 +74,7 @@ export default function Instructions() {
           of chaos.
         </li>
       </ul>
-  
+
       <h3>Game Flow 🎮</h3>
       <ul>
         <li>Each round lasts <strong>60 seconds</strong>.</li>
@@ -96,13 +96,13 @@ export default function Instructions() {
           points scored.
         </li>
       </ul>
-  
+
       <h3>Categories (Islamic Edition ☪️)</h3>
       <p>
         This is an <strong>Islamic version of Articulate</strong>, so every word
         belongs to one of the following categories:
       </p>
-  
+
       <ul>
         <li>
           <strong>Figure</strong> – This can be the name of a person connected to
@@ -111,7 +111,7 @@ export default function Instructions() {
           lessons.
         </li>
         <li>
-          <strong>Nature</strong> – .Anything mentioned in the Qur’an, such as animals, 
+          <strong>Nature</strong> – .Anything mentioned in the Qur’an, such as animals,
           plants, celestial bodies, etc. 🌿
         </li>
         <li>
@@ -120,31 +120,32 @@ export default function Instructions() {
           guess either one 📖
         </li>
         <li>
-          <strong>Quality</strong> – A characteristic or attribute found in people.
-          This could be a masdar (a verbal noun) like "mercy" or "patience", or an adjective
-          like "kind" or "angry".
+          <strong>Action</strong> – A verb-based word (ending in -ing) rooted in an
+          action or concept found in the Qur'an, such as "praising" or "worshipping",
+          ranging from everyday deeds to more nuanced ones.
         </li>
         <li>
-          <strong>Random</strong> – A mixture of action-based words (words ending with -ing), a 
-          few common Arabic fiqh terms, random objects mentioned in the Qur’an, etc. 🎲
+          <strong>Random</strong> – A mixture of characteristics or attributes (masdar
+          nouns like "mercy" or adjectives like "kind"), common Arabic fiqh terms,
+          random objects mentioned in the Qur’an, etc.
         </li>
         <li>
           <strong>Any</strong> – A special space where a random category is chosen
-          each time you draw a card
+          each time you draw a card 🎲
         </li>
       </ul>
-  
+
       <h3>Winning the Game 🏁</h3>
       <p>
-        There are <strong>24 spaces</strong> on the board. The first team to cross the final space 
+        There are <strong>24 spaces</strong> on the board. The first team to cross the final space
         wins the game.
       </p>
-  
+
       <p>
         Play with good intentions, have fun, and remember — teamwork and good
         character always win 💚
       </p>
-  
+
       <button className="back-button" onClick={() => navigate('/')}>Back</button>
     </div>
   )

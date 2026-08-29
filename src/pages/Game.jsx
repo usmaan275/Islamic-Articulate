@@ -4,7 +4,7 @@ import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
 import cards from '../data/cards'
 
-const REAL_CATEGORIES = ['Figure', 'Nature', 'Surah', 'Quality', 'Random']
+const REAL_CATEGORIES = ['Figure', 'Nature', 'Surah', 'Action', 'Random']
 const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
 const WIN_POSITION = 24
 const ROUND_TIME = 60
@@ -29,7 +29,7 @@ export default function Game() {
     Figure: new Set(),
     Nature: new Set(),
     Surah: new Set(),
-    Quality: new Set(),
+    Action: new Set(),
     Random: new Set(),
   })
 
