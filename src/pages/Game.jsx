@@ -43,7 +43,7 @@ export default function Game() {
 
   /* ------------------ HELPERS ------------------ */
 
-  const getNatureUnusedCard = (category) => {
+  const getUnusedCard = (category) => {
     const used = usedCards[category]
     const available = cards.filter(card => !used.has(card.id))
 
@@ -70,7 +70,7 @@ export default function Game() {
         : boardCategory
 
     setActiveCategory(category)
-    setCurrentCard(getNatureUnusedCard(category))
+    setCurrentCard(getUnusedCard(category))
 
     setOverlayVisible(true)
     setPoints(0)
@@ -113,7 +113,7 @@ export default function Game() {
       setActiveCategory(nextCategory)
     }
 
-    setCurrentCard(getNatureUnusedCard(nextCategory))
+    setCurrentCard(getUnusedCard(nextCategory))
   }
 
   const handleSkip = () => nextCard(false)
