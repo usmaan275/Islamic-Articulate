@@ -60,7 +60,7 @@ export default [
   { id:  55, Figure: "Hud ؑ"                   , Nature: "Foam"        , Surah: "[98] Al-Bayyinah (The Clear Proof)"    , Action: "Warning"      , Random: "Taqwa"      },
   { id:  56, Figure: "Fatimah ؓ"               , Nature: "Wind"        , Surah: "[46] Al-Ahqaf (The Sandhills)"         , Action: "Wandering"    , Random: "Pot"        },
   { id:  57, Figure: "Ismail ؑ"                , Nature: "Ape"         , Surah: "[54] Al-Qamar (The Moon)"              , Action: "Ascending"    , Random: "Madinah"    },
-  { id:  58, Figure: "Abdur-Rahman ؓ"          , Nature: "Path"        , Surah: "[87] Al-A'la (The Most High)"          , Action: "Descending"   , Random: "Sleep"      },
+  { id:  58, Figure: "Abdur-Rahman ؓ"          , Nature: "Path"        , Surah: "[87] Al-A'la (The Most High)"          , Action: "Descending"   , Random: "Army"       },
   { id:  59, Figure: "Khidr ؑ"                 , Nature: "Camel"       , Surah: "[91] Ash-Shams (The Sun)"              , Action: "Splitting"    , Random: "Cup"        },
   { id:  60, Figure: "Nuh ؑ"                   , Nature: "Fingers"     , Surah: "[111] Al-Masad (The Palm Fiber)"       , Action: "Striking"     , Random: "Ayah"       },
   { id:  61, Figure: "Jalut"                  , Nature: "Nose"        , Surah: "[51] Adh-Dhariyat (The Scatterers)"    , Action: "Swallowing"   , Random: "Rope"       },
