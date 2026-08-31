@@ -116,14 +116,12 @@ button:hover {
   box-sizing: border-box;
 }
 
-/* Fact strip along the top — flex-wrap centers whatever doesn't fit
-   onto its own row instead of overflowing */
+/* Fact strip along the top — fixed 5-column grid so it's always exactly
+   one row; columns shrink together instead of any single item wrapping */
 .card-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.2dvh 2vw;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1dvh 1.2vw;
   width: 100%;
   max-width: 900px;
   padding-bottom: 2dvh;
@@ -136,23 +134,23 @@ button:hover {
   flex-direction: column;
   align-items: center;
   gap: 0.3dvh;
-  flex: 0 1 clamp(80px, 17vw, 150px);
-  min-width: 0; /* let flex-basis govern width, not content */
+  min-width: 0; /* let the grid track govern width, not the content */
 }
 
 .card-fact-label {
-  font-size: clamp(9px, 1.3dvh, 13px);
+  font-size: clamp(8px, 1.2dvh, 12px);
   color: #9fe6c3;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .card-fact-value {
-  font-size: clamp(10px, 1.5dvh, 15px);
+  font-size: clamp(8px, 1.3dvh, 13px);
   color: rgba(240, 253, 244, 0.75);
   text-align: center;
   line-height: 1.25;
   overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Category + big word, centred in the remaining space */
