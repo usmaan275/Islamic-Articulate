@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="screen center">
       <h1>Islamic Articulate</h1>
-      <button onClick={() => navigate('/teams')}>Play</button>
+      <button onClick={() => navigate('/setup')}>Play</button>
       <button onClick={() => navigate('/instructions')}>Instructions</button>
     </div>
   )

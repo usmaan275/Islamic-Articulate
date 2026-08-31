@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Board from '../components/Board'
 import CardOverlay from '../components/CardOverlay'
 import cards from '../data/cards'
@@ -11,6 +11,7 @@ const DEFAULT_ROUND_TIME = 60
 
 export default function Game() {
   const location = useLocation()
+  const navigate = useNavigate()
   const teamCount = location.state?.teams || 2
   const teamNames =
     location.state?.teamNames ||
@@ -29,13 +30,7 @@ export default function Game() {
   const [activeCategory, setActiveCategory] = useState(null)
   const [currentCard, setCurrentCard] = useState(null)
 
-  // Once any team crosses the finish line, we don't end immediately —
-  // we let the rotation finish out the rest of the cycle (whoever hasn't
-  // had their turn yet this round still gets it), then stop. We never
-  // wrap back around to a team that's already played this round.
   const [finalStretch, setFinalStretch] = useState(false)
-
-  // Array of winning team indices (more than one = a tie)
   const [winners, setWinners] = useState(null)
 
   // 🔥 Per-category used card memory
@@ -62,7 +57,6 @@ export default function Game() {
     const available = cards.filter(card => !used.has(card.id))
 
     if (available.length === 0) {
-      // reset category memory if exhausted
       setUsedCards(prev => ({
         ...prev,
         [category]: new Set(),
@@ -112,7 +106,6 @@ export default function Game() {
     if (correct) setPoints(prev => prev + 1)
     if (skipped) setSkipsUsed(prev => prev + 1)
 
-    // mark card as used for this category
     setUsedCards(prev => {
       const next = { ...prev }
       const updated = new Set(next[activeCategory])
@@ -121,7 +114,6 @@ export default function Game() {
       return next
     })
 
-    // Any → new category every card
     let nextCategory = activeCategory
     if (boardCategory === 'Any') {
       nextCategory =
@@ -154,9 +146,6 @@ export default function Game() {
       setFinalStretch(true)
     }
 
-    // The team that just played is last in the rotation order → everyone
-    // who needed a catch-up turn has now had it, so the game ends here
-    // rather than wrapping back to team 1.
     const isLastInRotation = currentTeam === teamCount - 1
 
     if (stretchActive && isLastInRotation) {
@@ -188,6 +177,11 @@ export default function Game() {
       endRound()
     }
   }, [timeLeft, overlayVisible])
+
+  /* ------------------ WINNER SCREEN ACTIONS ------------------ */
+
+  const goHome = () => navigate('/')
+  const playAgain = () => navigate('/setup')
 
   /* ------------------ RENDER ------------------ */
 
@@ -246,6 +240,11 @@ export default function Game() {
                   </li>
                 ))}
             </ol>
+
+            <div className="winner-actions">
+              <button className="secondary-btn" onClick={goHome}>Home</button>
+              <button onClick={playAgain}>Play Again</button>
+            </div>
           </div>
         </div>
       )}

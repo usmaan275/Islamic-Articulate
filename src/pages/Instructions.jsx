@@ -54,42 +54,43 @@ export default function Instructions() {
         </li>
       </ul>
 
-      <h3>Teams 👥</h3>
-      <p>You can choose from <strong>four team options</strong>:</p>
+      <h3>Setup 👥</h3>
+      <p>Before you start, the setup screen lets you customise:</p>
       <ul>
         <li>
-          <strong>1 Team</strong> – Practice mode. Just you and friends, no
-          competition, just halal fun 😄
+          <strong>Number of teams</strong> – choose <strong>1 to 4</strong> teams:
+          <ul>
+            <li><strong>1 Team</strong> – Practice mode. Just you and friends, no competition, just halal fun 😄</li>
+            <li><strong>2 Teams</strong> – Classic competitive mode. May the best team win 🏆</li>
+            <li><strong>3 Teams</strong> – Often the most enjoyable… and often, <strong>three is Sunnah</strong> 🙂</li>
+            <li><strong>4 Teams</strong> – More people, more barakah ✨ Big energy, lots of chaos.</li>
+          </ul>
         </li>
         <li>
-          <strong>2 Teams</strong> – Classic competitive mode. May the best team
-          win 🏆
+          <strong>Team names</strong> – rename each team from the default "Team 1", "Team 2", etc. to whatever you like.
         </li>
         <li>
-          <strong>3 Teams</strong> – Often the most enjoyable… and often,
-          <strong> three is Sunnah</strong> 🙂
+          <strong>Time per round</strong> – pick a preset (30s, 45s, 60s, 90s, 120s) or enter a custom time. Default is 60 seconds.
         </li>
         <li>
-          <strong>4 Teams</strong> – More people, more barakah ✨ Big energy, lots
-          of chaos.
+          <strong>Skip limit</strong> – by default skips are unlimited, but you can turn on a limit and set exactly how many skips each team gets per round.
         </li>
       </ul>
 
       <h3>Game Flow 🎮</h3>
       <ul>
-        <li>Each round lasts <strong>60 seconds</strong>.</li>
+        <li>Teams take turns, one round at a time, using the time and skip settings chosen at setup.</li>
         <li>One player describes while the rest of the team guesses.</li>
         <li>
           For every correct guess, press <strong>Correct</strong> to earn a point
           and move to the next card.
         </li>
         <li>
-          If a word feels too difficult, press <strong>Skip</strong>.
+          If a word feels too difficult, press <strong>Skip</strong> — the button shows
+          how many skips you have left if a limit is set.
         </li>
         <li>
-          Skipped cards give <strong>no points</strong>, but you’re welcome to make
-          your own house rules — like limiting skips if you’re feeling confident
-          😏
+          Skipped cards give <strong>no points</strong>.
         </li>
         <li>
           When time runs out, your team moves forward on the board by the number of
@@ -111,7 +112,7 @@ export default function Instructions() {
           lessons.
         </li>
         <li>
-          <strong>Nature</strong> – .Anything mentioned in the Qur’an, such as animals,
+          <strong>Nature</strong> – Anything mentioned in the Qur’an, such as animals,
           plants, celestial bodies, etc. 🌿
         </li>
         <li>
@@ -137,8 +138,15 @@ export default function Instructions() {
 
       <h3>Winning the Game 🏁</h3>
       <p>
-        There are <strong>24 spaces</strong> on the board. The first team to cross the final space
-        wins the game.
+        There are <strong>24 spaces</strong> on the board. The first team to cross
+        the final space doesn't win outright — every other team gets a chance to
+        catch up. Once the round comes back around to everyone, whoever has the 
+        <strong> highest score</strong> wins, even if that's not the team that crossed
+        first. A tie is shared by all teams on the highest score.
+      </p>
+      <p>
+        At the end, you'll see a full leaderboard of every team's score, with the
+        option to play again or head back home.
       </p>
 
       <p>
