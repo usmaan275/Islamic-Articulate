@@ -49,7 +49,7 @@ export default function Setup() {
     const finalRoundTime =
       roundTime && Number(roundTime) > 0 ? Number(roundTime) : DEFAULT_ROUND_TIME
     const finalMaxSkips =
-      skipsEnabled && Number(maxSkips) > 0 ? Number(maxSkips) : null
+      skipsEnabled && Number(maxSkips) >= 0 ? Number(maxSkips) : null
 
     navigate('/game', {
       state: {
