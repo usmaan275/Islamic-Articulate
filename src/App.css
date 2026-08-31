@@ -490,10 +490,14 @@ button:hover {
   margin: 0;
 }
 
-/* Always occupies its layout space, even when the setting's off,
-   so the row/section never changes height or shifts on toggle */
-.number-input.invisible {
-  visibility: hidden;
+.number-input.inactive {
+  opacity: 0.45;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(252, 165, 165, 0.6);
+  text-decoration: line-through;
+  text-decoration-color: rgba(252, 165, 165, 0.6);
+  cursor: not-allowed;
 }
 
 .setup-section select {

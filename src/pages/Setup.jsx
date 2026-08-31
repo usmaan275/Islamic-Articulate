@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const TEAM_OPTIONS = [1, 2, 3, 4]
-const TIME_PRESETS = Array.from({ length: 19 }, (_, i) => 30 + i * 5) // 30s → 120s, step 5
+const TIME_PRESETS = [30, 45, 60, 90, 120]
 const DEFAULT_ROUND_TIME = 60
 const DEFAULT_MAX_SKIPS = 3
 
@@ -109,16 +109,17 @@ export default function Setup() {
               <option value="custom">Custom</option>
             </select>
 
-            {timeMode === 'custom' && (
-              <input
-                className="number-input"
-                type="number"
-                inputMode="numeric"
-                value={roundTime}
-                onChange={handleCustomTimeChange}
-                placeholder="Seconds"
-              />
-            )}
+            <input
+              className={`number-input${timeMode === 'custom' ? '' : ' inactive'}`}
+              type="number"
+              inputMode="numeric"
+              value={roundTime}
+              onChange={handleCustomTimeChange}
+              placeholder="Seconds"
+              disabled={timeMode !== 'custom'}
+              tabIndex={timeMode === 'custom' ? 0 : -1}
+              aria-hidden={timeMode !== 'custom'}
+            />
           </div>
         </section>
 
@@ -135,7 +136,7 @@ export default function Setup() {
             </label>
 
             <input
-              className={`number-input${skipsEnabled ? '' : ' invisible'}`}
+              className={`number-input${skipsEnabled ? '' : ' inactive'}`}
               type="number"
               inputMode="numeric"
               min={0}
