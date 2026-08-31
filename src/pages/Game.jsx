@@ -28,7 +28,15 @@ export default function Game() {
 
   const [activeCategory, setActiveCategory] = useState(null)
   const [currentCard, setCurrentCard] = useState(null)
-  const [winner, setWinner] = useState(null)
+
+  // Once any team crosses the finish line, we don't end immediately —
+  // we let the rotation finish out the rest of the cycle (whoever hasn't
+  // had their turn yet this round still gets it), then stop. We never
+  // wrap back around to a team that's already played this round.
+  const [finalStretch, setFinalStretch] = useState(false)
+
+  // Array of winning team indices (more than one = a tie)
+  const [winners, setWinners] = useState(null)
 
   // 🔥 Per-category used card memory
   const [usedCards, setUsedCards] = useState({
@@ -46,9 +54,6 @@ export default function Game() {
   )
   const boardCategory = 
     BOARD_CATEGORIES[(currentPosition + boardStartIndex) % BOARD_CATEGORIES.length] 
-
-  const skipsLeft = maxSkips === null ? null : Math.max(maxSkips - skipsUsed, 0)
-  const skipDisabled = maxSkips !== null && skipsLeft <= 0
 
   /* ------------------ HELPERS ------------------ */
 
@@ -71,7 +76,7 @@ export default function Game() {
   /* ------------------ START ROUND ------------------ */
 
   const startRound = () => {
-    if (winner !== null) return
+    if (winners !== null) return
 
     const category =
       boardCategory === 'Any'
@@ -127,6 +132,9 @@ export default function Game() {
     setCurrentCard(getUnusedCard(nextCategory))
   }
 
+  const skipDisabled = maxSkips !== null && skipsUsed >= maxSkips
+  const skipsLeft = maxSkips === null ? null : Math.max(maxSkips - skipsUsed, 0)
+
   const handleSkip = () => {
     if (skipDisabled) return
     nextCard(false, true)
@@ -138,17 +146,33 @@ export default function Game() {
   const endRound = () => {
     const newPositions = [...positions]
     newPositions[currentTeam] += points
+    setPositions(newPositions)
 
-    if (newPositions[currentTeam] >= WIN_POSITION) {
-      setPositions(newPositions)
-      setWinner(currentTeam)
+    const crossedFinish = newPositions[currentTeam] >= WIN_POSITION
+    const stretchActive = finalStretch || crossedFinish
+    if (crossedFinish && !finalStretch) {
+      setFinalStretch(true)
+    }
+
+    // The team that just played is last in the rotation order → everyone
+    // who needed a catch-up turn has now had it, so the game ends here
+    // rather than wrapping back to team 1.
+    const isLastInRotation = currentTeam === teamCount - 1
+
+    if (stretchActive && isLastInRotation) {
+      const maxScore = Math.max(...newPositions)
+      const winningTeams = newPositions
+        .map((score, i) => ({ score, i }))
+        .filter(t => t.score === maxScore)
+        .map(t => t.i)
+
+      setWinners(winningTeams)
       setOverlayVisible(false)
       return
     }
 
-    setPositions(newPositions)
-    setCurrentTeam(prev => (prev + 1) % teamCount)
-
+    const nextTeam = (currentTeam + 1) % teamCount
+    setCurrentTeam(nextTeam)
     setOverlayVisible(false)
     setPoints(0)
     setSkipsUsed(0)
@@ -172,11 +196,12 @@ export default function Game() {
       <Board positions={positions} teamCount={teamCount} startIndex={boardStartIndex} />
 
       <div className="bottom">
-        {winner === null ? (
+        {winners === null ? (
           <>
             <p>
               {teamNames[currentTeam]}'s turn next!
             </p>
+            {finalStretch && <p className="final-stretch-note">🏁 Final round!</p>}
             {!overlayVisible && (
               <button onClick={startRound}>Start Round</button>
             )}
@@ -198,9 +223,30 @@ export default function Game() {
         />
       )}
 
-      {winner !== null && (
+      {winners !== null && (
         <div className="winner-screen">
-          🎉 {teamNames[winner]} Wins! 🎉
+          <div className="leaderboard">
+            <h2 className="leaderboard-title">
+              {winners.length > 1
+                ? '🎉 It\'s a Tie! 🎉'
+                : `🎉 ${teamNames[winners[0]]} Wins! 🎉`}
+            </h2>
+            <ol className="leaderboard-list">
+              {positions
+                .map((score, i) => ({ score, i }))
+                .sort((a, b) => b.score - a.score)
+                .map(({ score, i }, rank) => (
+                  <li
+                    key={i}
+                    className={`leaderboard-row${winners.includes(i) ? ' winner-row' : ''}`}
+                  >
+                    <span className="leaderboard-rank">{rank + 1}</span>
+                    <span className="leaderboard-name">{teamNames[i]}</span>
+                    <span className="leaderboard-score">{score} pts</span>
+                  </li>
+                ))}
+            </ol>
+          </div>
         </div>
       )}
     </div>

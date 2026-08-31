@@ -77,6 +77,37 @@ button:hover {
   border-right: none;
 }
 
+.space-number {
+  position: absolute;
+  top: 0.6dvh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2.2vmin;
+  font-weight: 700;
+  color: #000;
+  z-index: 2;
+}
+
+.space-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(180deg);
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+  font-size: 2vw;
+  font-weight: 600;
+  letter-spacing: 0.25vmax;
+
+  color: #000000;
+  opacity: 0.85;
+
+  pointer-events: none;
+}
+
 /* --- Team Marker --- */
 .team-marker {
   width: 3.5vmin;
@@ -152,6 +183,16 @@ button:hover {
   line-height: 1.25;
   overflow-wrap: anywhere;
   word-break: break-word;
+
+  /* Reserve space for exactly 3 lines, always — short values just get
+     blank space below them, long ones truncate with an ellipsis, and
+     the box height never changes card-to-card */
+  min-height: calc(1.25em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 /* Category + big word, centred in the remaining space */
@@ -240,7 +281,7 @@ button:hover {
   background: #059669;
 }
 
-/* WINNER SCREEN */
+/* WINNER SCREEN / LEADERBOARD */
 .winner-screen {
   position: fixed;
   inset: 0;
@@ -251,40 +292,69 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 6dvh;
   text-align: center;
+  padding: 4dvh 4vw;
+  box-sizing: border-box;
 }
 
-.space-number {
-  position: absolute;
-  top: 0.6dvh;
-  left: 50%;
-  transform: translateX(-50%);
+.leaderboard {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 3dvh;
+}
 
-  font-size: 2.2vmin;
+.leaderboard-title {
+  font-size: clamp(28px, 5dvh, 48px);
+  margin: 0;
+}
+
+.leaderboard-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2dvh;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  padding: 1.6dvh 4vw;
+  border-radius: 1.2dvh;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: clamp(14px, 2.4dvh, 20px);
+}
+
+.leaderboard-rank {
   font-weight: 700;
-  color: #000;
-  z-index: 2;
+  color: #9fe6c3;
+  min-width: 2ch;
 }
 
-.space-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(180deg);
-
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-
-  font-size: 2vw;
+.leaderboard-name {
+  flex: 1;
+  text-align: left;
   font-weight: 600;
-  letter-spacing: 0.25vmax;
+}
 
-  color: #000000;
-  opacity: 0.85;
+.leaderboard-score {
+  font-weight: 600;
+  color: rgba(240, 253, 244, 0.75);
+}
 
-  pointer-events: none;
+.winner-row {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #10b981;
+}
+
+.winner-row .leaderboard-rank,
+.winner-row .leaderboard-score {
+  color: #6ee7b7;
 }
 
 /* ---------- INSTRUCTIONS PAGE ---------- */
