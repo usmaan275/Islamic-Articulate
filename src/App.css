@@ -470,7 +470,6 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.9dvh;
   color: #f0fdf4;
-  -webkit-text-fill-color: #f0fdf4; /* stops the browser from painting the value with its own native color */
   outline: none;
   transition: border-color 0.2s, background 0.2s;
 }
@@ -484,16 +483,9 @@ button:hover {
   box-sizing: border-box;
 }
 
-.number-input::-webkit-outer-spin-button,
-.number-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .number-input.inactive {
   opacity: 0.45;
   color: #fca5a5;
-  -webkit-text-fill-color: #fca5a5;
   background: rgba(239, 68, 68, 0.08);
   border-color: rgba(252, 165, 165, 0.6);
   text-decoration: line-through;

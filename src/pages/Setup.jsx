@@ -115,7 +115,7 @@ export default function Setup() {
               inputMode="numeric"
               value={roundTime}
               onChange={handleCustomTimeChange}
-              placeholder="Seconds"
+              placeholder="60"
               disabled={timeMode !== 'custom'}
               tabIndex={timeMode === 'custom' ? 0 : -1}
               aria-hidden={timeMode !== 'custom'}
@@ -142,6 +142,7 @@ export default function Setup() {
               min={0}
               value={maxSkips}
               onChange={e => setMaxSkips(e.target.value)}
+              placeholder="..."
               disabled={!skipsEnabled}
               tabIndex={skipsEnabled ? 0 : -1}
               aria-hidden={!skipsEnabled}
