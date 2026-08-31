@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Instructions from './pages/Instructions'
-import TeamSelect from './pages/TeamSelect'
+import Setup from './pages/Setup'
 import Game from './pages/Game'
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/instructions" element={<Instructions />} />
-      <Route path="/teams" element={<TeamSelect />} />
+      <Route path="/teams" element={<Setup />} />
       <Route path="/game" element={<Game />} />
     </Routes>
   )

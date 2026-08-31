@@ -7,18 +7,24 @@ import cards from '../data/cards'
 const REAL_CATEGORIES = ['Figure', 'Nature', 'Surah', 'Action', 'Random']
 const BOARD_CATEGORIES = [...REAL_CATEGORIES, 'Any']
 const WIN_POSITION = 24
-const ROUND_TIME = 60
+const DEFAULT_ROUND_TIME = 60
 
 export default function Game() {
   const location = useLocation()
   const teamCount = location.state?.teams || 2
+  const teamNames =
+    location.state?.teamNames ||
+    Array.from({ length: teamCount }, (_, i) => `Team ${i + 1}`)
+  const roundTime = location.state?.roundTime || DEFAULT_ROUND_TIME
+  const maxSkips = location.state?.maxSkips ?? null // null = unlimited
 
   const [positions, setPositions] = useState(Array(teamCount).fill(0))
   const [currentTeam, setCurrentTeam] = useState(0)
 
   const [overlayVisible, setOverlayVisible] = useState(false)
   const [points, setPoints] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(ROUND_TIME)
+  const [timeLeft, setTimeLeft] = useState(roundTime)
+  const [skipsUsed, setSkipsUsed] = useState(0)
 
   const [activeCategory, setActiveCategory] = useState(null)
   const [currentCard, setCurrentCard] = useState(null)
@@ -40,6 +46,9 @@ export default function Game() {
   )
   const boardCategory = 
     BOARD_CATEGORIES[(currentPosition + boardStartIndex) % BOARD_CATEGORIES.length] 
+
+  const skipsLeft = maxSkips === null ? null : Math.max(maxSkips - skipsUsed, 0)
+  const skipDisabled = maxSkips !== null && skipsLeft <= 0
 
   /* ------------------ HELPERS ------------------ */
 
@@ -74,7 +83,8 @@ export default function Game() {
 
     setOverlayVisible(true)
     setPoints(0)
-    setTimeLeft(ROUND_TIME)
+    setSkipsUsed(0)
+    setTimeLeft(roundTime)
   }
 
   /* ------------------ TIMER ------------------ */
@@ -91,10 +101,11 @@ export default function Game() {
 
   /* ------------------ NEXT CARD ------------------ */
 
-  const nextCard = (correct = false) => {
+  const nextCard = (correct = false, skipped = false) => {
     if (!currentCard || !activeCategory) return
 
     if (correct) setPoints(prev => prev + 1)
+    if (skipped) setSkipsUsed(prev => prev + 1)
 
     // mark card as used for this category
     setUsedCards(prev => {
@@ -116,8 +127,11 @@ export default function Game() {
     setCurrentCard(getUnusedCard(nextCategory))
   }
 
-  const handleSkip = () => nextCard(false)
-  const handleCorrect = () => nextCard(true)
+  const handleSkip = () => {
+    if (skipDisabled) return
+    nextCard(false, true)
+  }
+  const handleCorrect = () => nextCard(true, false)
 
   /* ------------------ END ROUND ------------------ */
 
@@ -137,7 +151,8 @@ export default function Game() {
 
     setOverlayVisible(false)
     setPoints(0)
-    setTimeLeft(ROUND_TIME)
+    setSkipsUsed(0)
+    setTimeLeft(roundTime)
     setActiveCategory(null)
     setCurrentCard(null)
   }
@@ -160,7 +175,7 @@ export default function Game() {
         {winner === null ? (
           <>
             <p>
-              Team {currentTeam + 1}'s turn next!
+              {teamNames[currentTeam]}'s turn next!
             </p>
             {!overlayVisible && (
               <button onClick={startRound}>Start Round</button>
@@ -178,12 +193,14 @@ export default function Game() {
           onNext={handleCorrect}
           onSkip={handleSkip}
           timeLeft={timeLeft}
+          skipsLeft={skipsLeft}
+          skipDisabled={skipDisabled}
         />
       )}
 
       {winner !== null && (
         <div className="winner-screen">
-          🎉 Team {winner + 1} Wins! 🎉
+          🎉 {teamNames[winner]} Wins! 🎉
         </div>
       )}
     </div>
