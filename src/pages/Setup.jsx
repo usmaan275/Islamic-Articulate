@@ -19,12 +19,22 @@ export default function Setup() {
   const [maxSkips, setMaxSkips] = useState(DEFAULT_MAX_SKIPS)
 
   function handleTeamCountChange(n) {
-    setTeamCount(n)
-    setTeamNames(prev => {
-      const next = [...prev]
-      while (next.length < n) next.push(`Team ${next.length + 1}`)
-      return next.slice(0, n)
-    })
+    if (n >= teamCount) {
+      setTeamCount(n)
+      setTeamNames(prev => {
+        const next = [...prev]
+        while (next.length < n) next.push(`Team ${next.length + 1}`)
+        return next
+      })
+    } else {
+      // Shrink teamCount immediately — this marks the extra inputs as
+      // "removing" below so their fade-out class kicks in right away.
+      // The actual array trim is delayed to give the animation time to play.
+      setTeamCount(n)
+      setTimeout(() => {
+        setTeamNames(prev => prev.slice(0, n))
+      }, 250) // must match team-name-out's duration in the CSS
+    }
   }
 
   function handleTeamNameChange(index, value) {
@@ -94,9 +104,11 @@ export default function Setup() {
               <input
                 key={i}
                 type="text"
+                className={i >= teamCount ? 'removing' : ''}
                 value={name}
                 placeholder={`Team ${i + 1}`}
                 onChange={e => handleTeamNameChange(i, e.target.value)}
+                disabled={i >= teamCount}
               />
             ))}
           </div>

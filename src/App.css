@@ -17,7 +17,8 @@ body, html, #root {
   align-items: center;
   justify-content: flex-start;
   height: 100dvh;
-  width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
   padding: 2dvh 2vw;
   box-sizing: border-box;
   overflow-y: auto;
@@ -50,7 +51,7 @@ button:hover {
 .board {
   display: flex;
   flex-wrap: nowrap;
-  width: 96vw;
+  width: 100%;
   height: 70dvh;
   margin-top: 2dvh;
   border-radius: 1dvh;
@@ -198,6 +199,7 @@ button:hover {
 .card-actions {
   display: flex;
   gap: 4vw;
+  margin-bottom: 4dvh;
 }
 
 .skip-btn,
@@ -428,7 +430,18 @@ button:hover {
 .team-names {
   display: flex;
   flex-direction: column;
+  transition: grid-template-rows 0.25s ease;
   gap: 1dvh;
+}
+
+@keyframes team-name-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes team-name-out {
+  from   { opacity: 1; transform: translateY(0); }
+  to     { opacity: 0; transform: translateY(-6px); }
 }
 
 .team-names input[type="text"] {
@@ -441,7 +454,13 @@ button:hover {
   border-radius: 0.9dvh;
   color: #f0fdf4;
   outline: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.02s, background 0.02s;
+  animation: team-name-in 0.25s ease;
+}
+
+.team-names input[type="text"].removing {
+  animation: team-name-out 0.25s ease forwards;
+  pointer-events: none;
 }
 
 .team-names input[type="text"]:focus {
