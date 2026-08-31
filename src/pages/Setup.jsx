@@ -10,32 +10,14 @@ export default function Setup() {
   const navigate = useNavigate()
 
   const [teamCount, setTeamCount] = useState(2)
-  const [teamNames, setTeamNames] = useState(['Team 1', 'Team 2'])
+  // Always holds all 4 slots — inactive ones just aren't sent when the game starts
+  const [teamNames, setTeamNames] = useState(['Team 1', 'Team 2', 'Team 3', 'Team 4'])
 
   const [timeMode, setTimeMode] = useState('preset') // 'preset' | 'custom'
   const [roundTime, setRoundTime] = useState(DEFAULT_ROUND_TIME)
 
   const [skipsEnabled, setSkipsEnabled] = useState(false)
   const [maxSkips, setMaxSkips] = useState(DEFAULT_MAX_SKIPS)
-
-  function handleTeamCountChange(n) {
-    if (n >= teamCount) {
-      setTeamCount(n)
-      setTeamNames(prev => {
-        const next = [...prev]
-        while (next.length < n) next.push(`Team ${next.length + 1}`)
-        return next
-      })
-    } else {
-      // Shrink teamCount immediately — this marks the extra inputs as
-      // "removing" below so their fade-out class kicks in right away.
-      // The actual array trim is delayed to give the animation time to play.
-      setTeamCount(n)
-      setTimeout(() => {
-        setTeamNames(prev => prev.slice(0, n))
-      }, 250) // must match team-name-out's duration in the CSS
-    }
-  }
 
   function handleTeamNameChange(index, value) {
     setTeamNames(prev => {
@@ -61,9 +43,9 @@ export default function Setup() {
   }
 
   function handleStart() {
-    const finalTeamNames = teamNames.map((name, i) =>
-      name.trim() === '' ? `Team ${i + 1}` : name.trim()
-    )
+    const finalTeamNames = teamNames
+      .slice(0, teamCount)
+      .map((name, i) => (name.trim() === '' ? `Team ${i + 1}` : name.trim()))
     const finalRoundTime =
       roundTime && Number(roundTime) > 0 ? Number(roundTime) : DEFAULT_ROUND_TIME
     const finalMaxSkips =
@@ -92,7 +74,7 @@ export default function Setup() {
                 key={n}
                 type="button"
                 className={n === teamCount ? 'toggle active' : 'toggle'}
-                onClick={() => handleTeamCountChange(n)}
+                onClick={() => setTeamCount(n)}
               >
                 {n}
               </button>
@@ -104,7 +86,7 @@ export default function Setup() {
               <input
                 key={i}
                 type="text"
-                className={i >= teamCount ? 'removing' : ''}
+                className={i >= teamCount ? 'inactive' : ''}
                 value={name}
                 placeholder={`Team ${i + 1}`}
                 onChange={e => handleTeamNameChange(i, e.target.value)}
