@@ -281,6 +281,28 @@ button:hover {
   background: #059669;
 }
 
+/* Correct/Skip flash feedback */
+.flash-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: flash-fade 0.35s ease-out forwards;
+}
+
+@keyframes flash-fade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.flash-correct {
+  background: rgba(2, 254, 128, 0.25); /* pale green */
+}
+
+.flash-skip {
+  background: rgba(79, 5, 251, 0.25); /* pale blue */
+}
+
 /* WINNER SCREEN / LEADERBOARD */
 .winner-screen {
   position: fixed;

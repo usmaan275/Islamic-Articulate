@@ -90,6 +90,10 @@ export default function Instructions() {
           how many skips you have left if a limit is set.
         </li>
         <li>
+          On a laptop, you can also use the keyboard: <strong>Enter</strong> for
+          Correct and <strong>'S'</strong> for Skip.
+        </li>
+        <li>
           Skipped cards give <strong>no points</strong>.
         </li>
         <li>
@@ -140,7 +144,7 @@ export default function Instructions() {
       <p>
         There are <strong>24 spaces</strong> on the board. The first team to cross
         the final space doesn't win outright — every other team gets a chance to
-        catch up. Once the round comes back around to everyone, whoever has the 
+        catch up. Once the round comes back around to everyone, whoever has the
         <strong> highest score</strong> wins, even if that's not the team that crossed
         first. A tie is shared by all teams on the highest score.
       </p>
