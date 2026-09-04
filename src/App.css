@@ -296,11 +296,11 @@ button:hover {
 }
 
 .flash-correct {
-  background: rgba(2, 254, 128, 0.25); /* pale green */
+  background: rgba(5, 94, 49, 0.25); /* pale green */
 }
 
 .flash-skip {
-  background: rgba(79, 5, 251, 0.25); /* pale blue */
+  background: rgba(35, 4, 107, 0.25); /* pale blue */
 }
 
 /* WINNER SCREEN / LEADERBOARD */
